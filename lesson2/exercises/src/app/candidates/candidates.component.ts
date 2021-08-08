@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./candidates.component.css']
 })
 export class CandidatesComponent implements OnInit {
-   missionName = "LaunchCode Moonshot"
+   missionName: string = "LaunchCode Moonshot"
+   editMissionName: boolean = false;
 
    candidates = [
     {name: 'Rusty Rutabaga', data: {age: 5, mass: '0.75 kg', sidekick: 'Blake'}, image: 'assets/images/Blake.png'},
@@ -27,7 +28,9 @@ export class CandidatesComponent implements OnInit {
     if(this.crew.length === 0){
       this.crew.push(crewMember)
     } else if(!this.crew.includes(crewMember)){
-        this.crew.push(crewMember)
+        this.crew.push(crewMember);
+    } else {
+      return false;
     }
 
     console.log(this.crew)
@@ -37,6 +40,9 @@ export class CandidatesComponent implements OnInit {
 
 
   // BONUS: Code the changeMissionName function here:
-
+  changeMissionName(newName: string){
+    this.missionName = newName;
+    this.editMissionName = false;
+  }
 
 }
